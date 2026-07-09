@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FONSECA ELZE INVESTMENTS — Corporate Document Hub</title>
+
+  <style>
+    /* Global typography & system stack */
+    :root{
+      --bg:#FFFFFF;
+      --muted-bg:#F4F6F9;
+      --primary:#0A369D;      /* Royal / Deep Electric Blue */
+      --accent:#0E7490;       /* Dark Aquamarine / Petrol */
+      --text:#1E2530;         /* Slate Dark for text */
+      --border:#E2E8F0;       /* Light institutional silver */
+      --kpi-bg: #F4F6F9;
+      --pill-inactive-bg: #F4F6F9;
+      --pill-inactive-text: var(--text);
+      --pill-active-bg: var(--primary);
+      --pill-active-text: #FFFFFF;
+      --badge-bg: var(--accent);
+      --shadow: 0 6px 18px rgba(12,24,64,0.06);
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      font-family: "Century Gothic", "Apple Gothic", "CenturyGothic", sans-serif;
+      color:var(--text);
+      font-size:15px;
+      line-height:1.35;
+    }
+
+    /* Layout container */
+    .wrap{
+      max-width:1200px;
+      margin:28px auto;
+      padding:20px;
+    }
+
+    /* Header */
+    header.topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 20px;
+      background:transparent;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      font-weight:700;
+      font-size:20px;
+      letter-spacing:0.6px;
+      color:var(--text);
+    }
+    .tagline{
+      font-size:12px;
+      color:#475569;
+      margin-top:2px;
+    }
+    .secure-indicator{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:var(--muted-bg);
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--text);
+      border:1px solid var(--border);
+      font-size:13px;
+      box-shadow: var(--shadow);
+    }
+
+    /* KPI row */
+    .kpi-row{
+      display:flex;
+      gap:14px;
+      margin:18px 0 20px;
+      align-items:stretch;
+      flex-wrap:wrap;
+    }
+    .kpi{
+      flex:1 1 250px;
+      background:var(--kpi-bg);
+      border:1px solid var(--border);
+      padding:16px;
+      border-radius:10px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      box-shadow: var(--shadow);
+      min-width:200px;
+    }
+    .kpi svg{width:44px;height:44px;flex-shrink:0}
+    .kpi .meta{display:flex;flex-direction:column;}
+    .kpi .label{font-size:12px;color:#475569}
+    .kpi .value{font-size:20px;font-weight:700;color:var(--primary)}
+
+    /* Toolbar: search & pills */
+    .toolbar{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin:18px 0;
+      flex-wrap:wrap;
+    }
+    .search-wrap{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:var(--muted-bg);
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      min-width:240px;
+      flex:1 1 360px;
+    }
+    .search-wrap input{
+      border:0;
+      outline:none;
+      background:transparent;
+      font-size:14px;
+      color:var(--text);
+      width:100%;
+    }
+
+    .pills{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      background:var(--pill-inactive-bg);
+      color:var(--pill-inactive-text);
+      border:1px solid var(--border);
+      font-size:13px;
+      cursor:pointer;
+      transition:all .18s ease;
+    }
+    .pill.active{
+      background:var(--pill-active-bg);
+      color:var(--pill-active-text);
+      border-color:transparent;
+      box-shadow: 0 8px 22px rgba(10,54,157,0.12);
+    }
+
+    /* Table container */
+    .table-wrap{
+      margin-top:12px;
+      background:transparent;
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid var(--border);
+    }
+    table.exec-table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:14px;
+    }
+    thead{
+      background:var(--muted-bg);
+    }
+    th,td{
+      padding:14px 16px;
+      text-align:left;
+      border-bottom:1px solid var(--border);
+      vertical-align:middle;
+    }
+    th{
+      font-size:13px;
+      color:#475569;
+      font-weight:600;
+    }
+    td.name-cell{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .file-icon{
+      width:36px;height:36px;border-radius:6px;
+      display:inline-flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+      background:#FFFFFF;border:1px solid var(--border);
+    }
+    .doc-title{font-weight:600;color:var(--text)}
+    .doc-sub{font-size:12px;color:#64748B;margin-top:4px}
+
+    .badge{
+      display:inline-block;
+      padding:6px 9px;
+      border-radius:999px;
+      font-size:12px;
+      color:#FFFFFF;
+      background:var(--badge-bg);
+      font-weight:600;
+    }
+
+    .action-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:8px;
+      background:transparent;
+      border:1px solid var(--primary);
+      color:var(--primary);
+      cursor:pointer;
+      font-weight:600;
+      transition:all .14s ease;
+    }
+    .action-btn svg{width:16px;height:16px}
+    .action-btn:hover{
+      background:var(--primary);
+      color:#fff;
+      border-color:var(--primary);
+    }
+
+    .status-pill{
+      padding:6px 8px;
+      font-weight:700;
+      border-radius:999px;
+      font-size:12px;
+      background:#0F1724;
+      color:#FFF;
+      display:inline-block;
+    }
+
+    /* Empty state */
+    .empty-state{
+      padding:48px;
+      text-align:center;
+      color:#475569;
+      background:linear-gradient(180deg, rgba(244,246,249,0.6), rgba(244,246,249,0.8));
+    }
+
+    /* Footer */
+    footer{
+      margin-top:26px;
+      padding:18px 10px;
+      color:#475569;
+      font-size:13px;
+      border-top:1px solid var(--border);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .footer-links{display:flex;gap:12px;align-items:center}
+    .footer-links a{color:#475569;text-decoration:none}
+    .dot{margin:0 8px;color:#94A3B8}
+
+    /* Responsive */
+    @media (max-width:920px){
+      .kpi-row{flex-direction:column}
+      .toolbar{flex-direction:column;align-items:stretch}
+      th,td{padding:12px}
+      .search-wrap{flex-basis:auto}
+    }
+
+    @media (max-width:560px){
+      .brand .logo{font-size:16px}
+      .kpi .value{font-size:18px}
+      .pill{padding:7px 10px;font-size:13px}
+      .file-icon{width:34px;height:34px}
+      th:nth-child(4), td:nth-child(4), th:nth-child(5), td:nth-child(5){display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header class="topbar" role="banner" aria-label="Corporate header">
+      <div class="brand" aria-hidden="false">
+        <div>
+          <div class="logo">FONSECA ELZE INVESTMENTS</div>
+          <div class="tagline">Corporate Document Hub - Secure Professional Access</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="secure-indicator" title="Secure Server Connection Active">
+          <span style="font-size:16px">🔒</span>
+          <strong style="font-size:13px;color:var(--text)">Secure Server Connection Active</strong>
+        </div>
+      </div>
+    </header>
+
+    <!-- KPI Cards -->
+    <section aria-label="Key metrics" class="kpi-row" id="kpiRow">
+      <div class="kpi">
+        <!-- Documents Icon (office/portfolio) -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="6" width="20" height="12" rx="2" stroke="#0A369D" stroke-width="1.6" fill="#FFFFFF"/>
+          <path d="M7 6V4a1 1 0 0 1 1-1h2v3H7z" fill="#0A369D" opacity="0.06"/>
+        </svg>
+        <div class="meta">
+          <div class="label">Total Documents</div>
+          <div class="value" id="totalDocuments">0</div>
+        </div>
+      </div>
+
+      <div class="kpi">
+        <!-- Categories Icon (folders) -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 7a2 2 0 0 1 2-2h3l2 2h9a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke="#0E7490" stroke-width="1.6" fill="#FFFFFF"/>
+        </svg>
+        <div class="meta">
+          <div class="label">Active Categories</div>
+          <div class="value">6</div>
+        </div>
+      </div>
+
+      <div class="kpi">
+        <!-- Availability Icon (shield) -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3l7 3v5c0 5-3.6 9.7-7 10-3.4-.3-7-5-7-10V6l7-3z" stroke="#0A369D" stroke-width="1.6" fill="#FFFFFF"/>
+        </svg>
+        <div class="meta">
+          <div class="label">System Availability</div>
+          <div class="value">100% Operational</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toolbar: Search + Filter Pills -->
+    <section class="toolbar" aria-label="Search and filters">
+      <div class="search-wrap" role="search" aria-label="Search documents">
+        <span style="font-size:16px;color:#64748B">🔍</span>
+        <input id="searchInput" type="search" placeholder="Search documents by name..." aria-label="Search documents" />
+      </div>
+
+      <nav class="pills" role="navigation" aria-label="Document categories">
+        <button class="pill active" data-cat="all">All</button>
+        <button class="pill" data-cat="analytics">Analytics</button>
+        <button class="pill" data-cat="financials">Financials</button>
+        <button class="pill" data-cat="corporate">Corporate</button>
+        <button class="pill" data-cat="projections">Projections</button>
+        <button class="pill" data-cat="others">Others</button>
+      </nav>
+    </section>
+
+    <!-- Executive Data Table -->
+    <section class="table-wrap" aria-label="Document repository">
+      <table class="exec-table" role="table" aria-label="Documents table">
+        <thead>
+          <tr>
+            <th scope="col">Document Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Upload Date</th>
+            <th scope="col">File Size</th>
+            <th scope="col" style="text-align:right;padding-right:20px">Action</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- JS will inject rows here -->
+        </tbody>
+      </table>
+
+      <!-- Empty state template -->
+      <div id="emptyState" class="empty-state" style="display:none">
+        <div style="font-weight:700;font-size:16px;margin-bottom:6px">No institutional documents found matching the criteria.</div>
+        <div style="font-size:13px;color:#64748B">Refine your search or select a different category.</div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        © 2026 FONSECA ELZE INVESTMENTS. All Rights Reserved.
+        <div style="font-size:12px;color:#64748B;margin-top:6px">Corporate Document Center - Professional Secure Platform.</div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <div id="clock" style="font-weight:700;color:var(--text);">⏰ --:--:--</div>
+        <span class="dot">•</span>
+        <a href="mailto:contact@fonsecaelze.com">📧 Contact</a>
+        <span class="dot">•</span>
+        <a href="#" aria-label="Terms of Service">📋 Terms of Service</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Data model for the document repository.
+    // --- ADD NEW DOCUMENTS HERE: COPY AND PASTE A NEW OBJECT LINE TO EXPAND THE HUB ---
+    // --- AGREGA NUEVOS DOCUMENTOS AQUÍ COMPLETANDO ESTE BLOQUE ---
+    const documents = [
+      { id: 1, title: 'Financial Proforma Q3', category: 'financials', date: '2026-06-15', size: '3.1 MB', url: '#', fileUrl: '#', status: 'Verified' },
+      { id: 2, title: 'Market Analytics - Industrials', category: 'analytics', date: '2026-05-27', size: '1.8 MB', url: '#', fileUrl: '#', status: 'Verified' },
+      { id: 3, title: 'Board Minutes 2026-05', category: 'corporate', date: '2026-05-10', size: '620 KB', url: '#', fileUrl: '#', status: 'Secure Access' },
+      { id: 4, title: 'Revenue Projections FY27', category: 'projections', date: '2026-06-01', size: '2.4 MB', url: '#', fileUrl: '#', status: 'Verified' },
+      { id: 5, title: 'Audit Summary (Confidential)', category: 'others', date: '2026-04-22', size: '4.9 MB', url: '#', fileUrl: '#', status: 'Secure Access' },
+      { id: 6, title: 'Consolidated Financial Statements', category: 'financials', date: '2026-03-18', size: '5.2 MB', url: '#', fileUrl: '#', status: 'Verified' }
+    ];
+
+    // DOM references
+    const totalDocumentsEl = document.getElementById('totalDocuments');
+    const tableBody = document.getElementById('tableBody');
+    const searchInput = document.getElementById('searchInput');
+    const pills = Array.from(document.querySelectorAll('.pill'));
+    const emptyState = document.getElementById('emptyState');
+    const clockEl = document.getElementById('clock');
+
+    // State
+    let activeCategory = 'all';
+    let query = '';
+
+    // Initialize counters and UI
+    function init() {
+      totalDocumentsEl.textContent = documents.length;
+      attachEvents();
+      render();
+      startClock();
+    }
+
+    // Attach UI events for search and filter pills
+    function attachEvents(){
+      // Search
+      searchInput.addEventListener('input', (e) => {
+        query = e.target.value.trim().toLowerCase();
+        render();
+      });
+
+      // Pills
+      pills.forEach(p => {
+        p.addEventListener('click', () => {
+          pills.forEach(x => x.classList.remove('active'));
+          p.classList.add('active');
+          activeCategory = p.dataset.cat || 'all';
+          render();
+        });
+      });
+    }
+
+    // Render the executive table based on filters
+    function render(){
+      // derive visible documents
+      const visible = documents.filter(doc => {
+        const inCategory = (activeCategory === 'all') || (doc.category.toLowerCase() === activeCategory.toLowerCase());
+        const matchesQuery = !query || doc.title.toLowerCase().includes(query);
+        return inCategory && matchesQuery;
+      });
+
+      // update table rows
+      tableBody.innerHTML = '';
+
+      if (visible.length === 0) {
+        // show empty state, hide table body by adding a single-row spacer
+        emptyState.style.display = 'block';
+        // ensure table body has no rows
+        tableBody.innerHTML = '';
+        return;
+      } else {
+        emptyState.style.display = 'none';
+      }
+
+      const frag = document.createDocumentFragment();
+      visible.forEach(doc => {
+        const tr = document.createElement('tr');
+
+        // Document Name cell
+        const tdName = document.createElement('td');
+        tdName.className = 'name-cell';
+        tdName.innerHTML = `
+          <div class="file-icon" aria-hidden="true">${fileTypeSVG(doc)}</div>
+          <div>
+            <div class="doc-title">${escapeHtml(doc.title)}</div>
+            <div class="doc-sub">${getFileLabel(doc)}</div>
+          </div>
+        `;
+        tr.appendChild(tdName);
+
+        // Category
+        const tdCat = document.createElement('td');
+        tdCat.innerHTML = `<span class="badge">${capitalize(doc.category)}</span>`;
+        tr.appendChild(tdCat);
+
+        // Date
+        const tdDate = document.createElement('td');
+        tdDate.textContent = doc.date;
+        tr.appendChild(tdDate);
+
+        // Size
+        const tdSize = document.createElement('td');
+        tdSize.textContent = doc.size;
+        tr.appendChild(tdSize);
+
+        // Action
+        const tdAct = document.createElement('td');
+        tdAct.style.textAlign = 'right';
+        tdAct.style.paddingRight = '20px';
+        tdAct.innerHTML = `
+          <a class="action-btn" href="${encodeURI(doc.url || '#')}" aria-label="Download ${escapeHtml(doc.title)}">
+            <svg viewBox="0 0 24 24" fill="none" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Download
+          </a>
+          <div style="margin-top:8px;text-align:right"><span class="status-pill" title="${escapeHtml(doc.status || '')}">${escapeHtml(doc.status || 'Verified')}</span></div>
+        `;
+        tr.appendChild(tdAct);
+
+        frag.appendChild(tr);
+      });
+
+      tableBody.appendChild(frag);
+    }
+
+    // Helpers
+    function capitalize(s){
+      if(!s) return '';
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    function escapeHtml(str){
+      if(!str) return '';
+      return String(str).replace(/[&<>"'`=\/]/g, function(s){ return ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;",'/':'&#x2F;','`':'&#x60;','=':'&#x3D;'
+      })[s];});
+    }
+
+    // Determine small label underneath title (type hint)
+    function getFileLabel(doc){
+      const title = (doc.title || '').toLowerCase();
+      if (title.includes('proforma') || title.includes('financial') || title.includes('statements')) return 'PDF • Confidential';
+      if (title.includes('analytics') || title.includes('market')) return 'Report • Read-only';
+      if (title.includes('minutes') || title.includes('board')) return 'Board Document';
+      if (title.includes('projections')) return 'Spreadsheet • Model';
+      return '';
+    }
+
+    // Compact file-type SVG based on heuristics
+    function fileTypeSVG(doc){
+      const t = (doc.title || '').toLowerCase();
+      if (t.includes('statement') || t.includes('financial') || t.includes('proforma') || t.includes('audit') || t.includes('minutes')) {
+        return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="18" height="18" rx="3" fill="#F8FAFF" stroke="${'#E2E8F0'}" />
+          <path d="M8 7h8M8 11h8M8 15h5" stroke="${'#0A369D'}" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>`;
+      }
+      if (t.includes('projections') || t.includes('model') || t.includes('spreadsheet') || t.includes('revenue')) {
+        return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="18" height="18" rx="3" fill="#F8FFFB" stroke="${'#E2E8F0'}" />
+          <path d="M7 7h10M7 11h10M7 15h10" stroke="${'#0E7490'}" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>`;
+      }
+      // fallback generic doc
+      return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="3" width="18" height="18" rx="3" fill="#FFFFFF" stroke="${'#E2E8F0'}" />
+        <path d="M8 7h8M8 11h8" stroke="${'#64748B'}" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>`;
+    }
+
+    // Digital clock
+    function startClock(){
+      function tick(){
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2,'0');
+        const mm = String(now.getMinutes()).padStart(2,'0');
+        const ss = String(now.getSeconds()).padStart(2,'0');
+        clockEl.textContent = `⏰ ${hh}:${mm}:${ss}`;
+      }
+      tick();
+      setInterval(tick,1000);
+    }
+
+    // Kickoff
+    init();
+  </script>
+</body>
+</html>
