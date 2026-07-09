@@ -1,444 +1,698 @@
-<!doctype html>
+me dio esto <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FONSECA ELZE INVERSIONES — Centro de Documentos Corporativos</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FONSECA ELZE INVERSIONES — Centro de Documentos Corporativos</title>
 
-  <style>
-    :root {
-      --bg: #F4F6F9;           /* Fondo gris plata institucional suave para dar contraste */
-      --card-bg: #FFFFFF;      /* Bloques blancos puros */
-      --primary: #0A369D;      /* Azul Rey Profundo */
-      --accent: #0E7490;       /* Azul Petróleo / Aguamarina Oscuro */
-      --text: #1E2530;         /* Gris Pizarra Oscuro */
-      --border: #E2E8F0;       /* Gris Plata para líneas */
-      --pill-inactive-bg: #E2E8F0;
-      --pill-inactive-text: var(--text);
-      --pill-active-bg: var(--primary);
-      --pill-active-text: #FFFFFF;
-      --shadow: 0 10px 25px rgba(12,24,64,0.05);
-    }
+  <style>
+    /*
+      Diseño Corporativo: Century Gothic stack, paleta institucional,
+      prohibido uso de rojo, naranja o verde chillón.
+    */
+    :root{
+      --bg:#F4F6F9;           /* Fondo general: Gris Plata institucional suave */
+      --surface:#FFFFFF;      /* Bloques principales (cards, tabla) */
+      --primary:#0A369D;      /* Azul Rey Profundo */
+      --accent:#0E7490;       /* Azul Petróleo / Aguamarina Oscuro */
+      --text:#1E2530;         /* Gris Pizarra Oscuro */
+      --muted:#64748B;        /* Gris secundario */
+      --border:#E2E8F0;       /* Separadores */
+      --kpi-shadow: 0 12px 30px rgba(10,54,157,0.08);
+      --pill-active-shadow: 0 8px 20px rgba(10,54,157,0.12);
+      --radius:12px;
+    }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: var(--bg);
-      font-family: "Century Gothic", "Apple Gothic", "CenturyGothic", sans-serif;
-      color: var(--text);
-      font-size: 15px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    /* Base */
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      font-family:"Century Gothic","Apple Gothic","CenturyGothic",sans-serif;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      font-size:15px;
+      line-height:1.4;
+    }
 
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 40px;
-    }
+    /* Mobile-first spacing */
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:16px;
+    }
 
-    /* Portada Ejecutiva / Hero Section */
-    .hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-      color: #FFFFFF;
-      padding: 40px 30px;
-      border-radius: 0 0 16px 16px;
-      box-shadow: var(--shadow);
-      margin-bottom: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%);
-      pointer-events: none;
-    }
+    /* HERO / BANNER CORPORATIVO */
+    .hero{
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color:#fff;
+      border-radius: var(--radius);
+      padding:20px;
+      margin-bottom:16px;
+      position:relative;
+      overflow:hidden;
+      box-shadow: 0 20px 40px rgba(10,26,64,0.12);
+    }
+    .hero-inner{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .hero h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:1.2px;
+      font-weight:700;
+    }
+    .hero p{
+      margin:0;
+      color: rgba(255,255,255,0.92);
+      font-size:13px;
+      opacity:0.95;
+    }
+    .hero .secure-badge{
+      position:absolute;
+      right:14px;
+      top:14px;
+      background: rgba(255,255,255,0.08);
+      color:#FFFFFF;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(4px);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
 
-    .hero-main { max-width: 800px; }
-    .hero .logo { 
-      font-weight: 700; 
-      font-size: 26px; 
-      letter-spacing: 1.5px; 
-      margin: 0 0 8px 0;
-      text-transform: uppercase;
-    }
-    .hero .tagline { 
-      font-size: 14px; 
-      color: rgba(255, 255, 255, 0.85); 
-      margin: 0;
-      font-weight: 300;
-    }
+    /* KPIs row */
+    .kpi-row{
+      display:flex;
+      gap:12px;
+      margin-top:16px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+    .kpi{
+      background:var(--surface);
+      border-radius:12px;
+      padding:12px;
+      box-shadow: var(--kpi-shadow);
+      display:flex;
+      gap:12px;
+      align-items:center;
+      border:1px solid var(--border);
+      min-width:160px;
+      flex:1 1 180px;
+    }
+    .kpi svg{ width:44px; height:44px; flex-shrink:0; }
+    .kpi .label{ font-size:12px; color:var(--muted); margin-bottom:4px; }
+    .kpi .value{ font-size:20px; font-weight:700; color:var(--primary); }
 
-    .secure-badge {
-      align-self: flex-start;
-      margin-top: 20px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.25);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+    /* Toolbar (search + pills) */
+    .toolbar{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+    .search{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:var(--surface);
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      min-width:160px;
+      flex:1 1 320px;
+    }
+    .search input{
+      border:0;
+      outline:none;
+      background:transparent;
+      font-size:14px;
+      color:var(--text);
+      width:100%;
+    }
 
-    /* KPI Grid */
-    .kpi-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .kpi {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 20px;
-      border-radius: 12px;
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      box-shadow: var(--shadow);
-    }
-    .kpi svg { width: 40px; height: 40px; flex-shrink: 0; }
-    .kpi .label { font-size: 13px; color: #64748B; font-weight: 600; }
-    .kpi .value { font-size: 22px; font-weight: 700; color: var(--primary); margin-top: 2px; }
+    .pills{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .pill{
+      background:transparent;
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:13px;
+      cursor:pointer;
+      transition:all .12s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .pill.active{
+      background:var(--primary);
+      color:#fff;
+      border-color:transparent;
+      box-shadow: var(--pill-active-shadow);
+    }
 
-    /* Barra de Herramientas */
-    .toolbar { 
-      display: flex; 
-      gap: 16px; 
-      align-items: center; 
-      justify-content: space-between; 
-      margin-bottom: 20px; 
-      flex-wrap: wrap; 
-    }
-    .search-wrap {
-      display: flex; 
-      align-items: center; 
-      gap: 10px; 
-      background: var(--card-bg);
-      padding: 12px 16px; 
-      border-radius: 10px; 
-      border: 1px solid var(--border);
-      flex: 1 1 360px;
-      box-shadow: var(--shadow);
-    }
-    .search-wrap input { border: 0; outline: none; background: transparent; font-size: 14px; color: var(--text); width: 100%; }
+    /* Table container: allow horizontal scroll on mobile */
+    .table-wrap{
+      background:var(--surface);
+      border-radius:12px;
+      padding:8px;
+      border:1px solid var(--border);
+      overflow:hidden;
+    }
+    .table-scroll{
+      width:100%;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    table.exec-table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:820px; /* ensures horizontal scroll on small screens */
+    }
+    thead{ background:transparent; }
+    th, td{
+      padding:14px 16px;
+      text-align:left;
+      border-bottom:1px solid var(--border);
+      vertical-align:middle;
+      color:var(--text);
+      font-size:14px;
+    }
+    th{
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+      text-transform:none;
+    }
+    td.name{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .file-icon{
+      width:44px;
+      height:44px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:8px;
+      background: #fff;
+      border:1px solid var(--border);
+      flex-shrink:0;
+    }
+    .doc-title{ font-weight:700; color:var(--text); }
+    .doc-sub{ font-size:12px; color:var(--muted); margin-top:4px; }
 
-    .pills { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .pill {
-      padding: 10px 16px; 
-      border-radius: 999px; 
-      background: var(--card-bg);
-      color: var(--pill-inactive-text); 
-      border: 1px solid var(--border); 
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer; 
-      transition: all .2s ease;
-      box-shadow: var(--shadow);
-    }
-    .pill.active { 
-      background: var(--pill-active-bg); 
-      color: var(--pill-active-text); 
-      border-color: transparent; 
-      box-shadow: 0 8px 20px rgba(10,54,157,0.15); 
-    }
+    .badge{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--accent);
+      color:#fff;
+      font-weight:700;
+      font-size:12px;
+    }
 
-    /* Tabla Corporativa Responsiva */
-    .table-container { 
-      background: var(--card-bg);
-      border-radius: 12px; 
-      overflow: hidden; 
-      border: 1px solid var(--border); 
-      box-shadow: var(--shadow);
-    }
-    .table-wrap {
-      width: 100%;
-      overflow-x: auto; 
-      -webkit-overflow-scrolling: touch;
-    }
-    table.exec-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 700px; }
-    thead { background: #F8FAFC; }
-    th, td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: middle; }
-    th { font-size: 13px; color: #64748B; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-    td.name-cell { display: flex; gap: 14px; align-items: center; min-width: 300px; }
-    .file-icon { width: 38px; height: 38px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; background: #F1F5F9; border: 1px solid var(--border); }
-    .doc-title { font-weight: 600; color: var(--text); line-height: 1.4; }
-    .doc-sub { font-size: 12px; color: #64748B; margin-top: 4px; }
+    /* Download button (solid, mobile-friendly) */
+    .action-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:10px;
+      background:var(--primary);
+      color:#fff;
+      border:0;
+      font-weight:700;
+      font-size:14px;
+      text-decoration:none;
+      transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+      box-shadow: 0 8px 20px rgba(10,54,157,0.12);
+    }
+    .action-btn:active{ transform:translateY(1px); opacity:0.95; }
+    .action-btn svg{ width:16px; height:16px; fill:currentColor; }
 
-    .badge { display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 12px; color: #FFFFFF; background: var(--badge-bg); font-weight: 600; }
+    .status-pill{
+      display:inline-block;
+      padding:6px 8px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:12px;
+      background:#0F1724;
+      color:#fff;
+      margin-top:8px;
+    }
 
-    /* Botón de Descarga */
-    .action-btn {
-      display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 8px;
-      background: var(--primary); border: none; color: #FFFFFF; cursor: pointer; font-weight: 600; transition: all .2s ease; text-decoration: none;
-      box-shadow: 0 4px 12px rgba(10,54,157,0.15);
-    }
-    .action-btn:hover { background: #072875; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(10,54,157,0.25); }
+    .empty-state{
+      padding:36px;
+      text-align:center;
+      color:var(--muted);
+    }
 
-    .status-pill { padding: 4px 10px; font-weight: 600; border-radius: 999px; font-size: 11px; background: #E2E8F0; color: var(--text); display: inline-block; }
+    /* Footer */
+    footer{
+      margin-top:16px;
+      padding:12px 4px;
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .footer-links{ display:flex; gap:12px; align-items:center; }
+    .footer-links a{ color:var(--muted); text-decoration:none; }
 
-    .empty-state { padding: 60px 20px; text-align: center; color: #64748B; }
+    /* Responsive adjustments */
+    @media (min-width:900px){
+      .hero h1{ font-size:28px; }
+      .hero p{ font-size:15px; }
+    }
 
-    footer { margin-top: 40px; padding: 24px 10px; color: #64748B; font-size: 13px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .footer-links { display: flex; gap: 12px; align-items: center; }
-    .footer-links a { color: #64748B; text-decoration: none; font-weight: 600; }
-    .footer-links a:hover { color: var(--primary); }
-    .dot { margin: 0 4px; color: #CBD5E1; }
+    @media (max-width:720px){
+      .hero{ padding:16px; }
+      .kpi{ padding:10px; }
+      .kpi .value{ font-size:18px; }
+      .action-btn{ padding:10px 12px; font-size:13px; }
+      table.exec-table{ min-width:700px; }
+    }
 
-    @media (max-width: 768px) {
-      .hero { padding: 30px 20px; border-radius: 0; margin-left: -20px; margin-right: -20px; }
-      .hero .logo { font-size: 22px; }
-      .toolbar { flex-direction: column; align-items: stretch; }
-      .pills { justify-content: flex-start; overflow-x: auto; padding-bottom: 6px; margin-top: 4px; -webkit-overflow-scrolling: touch; }
-      .pill { white-space: nowrap; }
-    }
-  </style>
+    @media (max-width:420px){
+      .container{ padding:12px; }
+      .hero h1{ font-size:18px; }
+      .hero p{ font-size:12px; }
+      .kpi-row{ gap:8px; }
+      .pill{ padding:8px 10px; font-size:13px; }
+      .search{ padding:8px 10px; }
+      table.exec-table{ min-width:640px; }
+    }
+
+  </style>
 </head>
 <body>
+  <div class="container">
 
-  <div class="hero">
-    <div class="hero-main">
-      <h1 class="logo">Fonseca Elze Inversiones</h1>
-      <p class="tagline">Centro de Documentos Corporativos — Plataforma de Gestión e Información Segura</p>
-    </div>
-    <div class="secure-badge">
-      <span>🔒</span> Servidor Corporativo Seguro Activo
-    </div>
-  </div>
+    <!-- HERO / BANNER CORPORATIVO -->
+    <section class="hero" aria-label="Portada corporativa">
+      <div class="hero-inner">
+        <h1>FONSECA ELZE INVERSIONES</h1>
+        <p>Centro de Documentos Corporativos — Acceso Profesional Seguro</p>
+      </div>
+      <div class="secure-badge" aria-hidden="true">🔒 Acceso Restringido - Servidor Seguro</div>
+    </section>
 
-  <div class="wrap" role="main">
-    
-    <section class="kpi-row" aria-label="Indicadores clave">
-      <div class="kpi">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="6" width="20" height="12" rx="2" stroke="#0A369D" stroke-width="2" fill="none"/>
-          <path d="M6 10h12M6 14h8" stroke="#0A369D" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <div>
-          <div class="label">Documentos Totales</div>
-          <div class="value" id="totalDocuments">0</div>
-        </div>
-      </div>
+    <!-- KPIs -->
+    <div class="kpi-row" role="region" aria-label="Indicadores clave">
+      <div class="kpi" aria-hidden="false">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="6" width="20" height="12" rx="2" fill="#FFFFFF" stroke="rgba(10,54,157,0.12)"></rect>
+          <path d="M7 6V4a1 1 0 0 1 1-1h2v3H7z" fill="var(--primary)" opacity="0.06"></path>
+        </svg>
+        <div>
+          <div class="label">Documentos Totales</div>
+          <div class="value" id="totalDocuments">0</div>
+        </div>
+      </div>
 
-      <div class="kpi">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 7a2 2 0 0 1 2-2h3l2 2h9a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke="#0E7490" stroke-width="2" fill="none"/>
-        </svg>
-        <div>
-          <div class="label">Categorías Activas</div>
-          <div class="value" id="activeCategories">0</div>
-        </div>
-      </div>
+      <div class="kpi">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 7a2 2 0 0 1 2-2h3l2 2h9a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" fill="#FFFFFF" stroke="var(--accent)"></path>
+        </svg>
+        <div>
+          <div class="label">Categorías Activas</div>
+          <div class="value" id="activeCategories">0</div>
+        </div>
+      </div>
 
-      <div class="kpi">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#0A369D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div>
-          <div class="label">Disponibilidad</div>
-          <div class="value" style="font-size: 16px; padding-top:4px;">100% Online</div>
-        </div>
-      </div>
-    </section>
+      <div class="kpi">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3l7 3v5c0 5-3.6 9.7-7 10-3.4-.3-7-5-7-10V6l7-3z" fill="#FFFFFF" stroke="var(--primary)"></path>
+        </svg>
+        <div>
+          <div class="label">Disponibilidad del Sistema</div>
+          <div class="value">100% Operativo</div>
+        </div>
+      </div>
+    </div>
 
-    <section class="toolbar">
-      <div class="search-wrap" role="search">
-        <span style="font-size:16px;color:#64748B">🔍</span>
-        <input id="searchInput" type="search" placeholder="Buscar por título de documento..." />
-      </div>
+    <!-- Toolbar: search + pills -->
+    <div class="toolbar" role="toolbar" aria-label="Búsqueda y filtros">
+      <div class="search" role="search" aria-label="Buscar documentos">
+        <span style="color:var(--muted)">🔍</span>
+        <input id="searchInput" type="search" placeholder="Buscar documentos por título..." aria-label="Buscar documentos" />
+      </div>
 
-      <nav class="pills">
-        <button class="pill active" data-cat="all">Todos</button>
-        <button class="pill" data-cat="analisis">Análisis</button>
-        <button class="pill" data-cat="financieros">Financieros</button>
-        <button class="pill" data-cat="corporativos">Corporativos</button>
-        <button class="pill" data-cat="proyecciones">Proyecciones</button>
-        <button class="pill" data-cat="otros">Otros</button>
-      </nav>
-    </section>
+      <nav class="pills" role="navigation" aria-label="Categorías">
+        <button class="pill active" data-cat="all">Todos</button>
+        <button class="pill" data-cat="analisis">Análisis</button>
+        <button class="pill" data-cat="financieros">Financieros</button>
+        <button class="pill" data-cat="corporativos">Corporativos</button>
+        <button class="pill" data-cat="proyecciones">Proyecciones</button>
+        <button class="pill" data-cat="otros">Otros</button>
+      </nav>
+    </div>
 
-    <div class="table-container">
-      <div class="table-wrap">
-        <table class="exec-table">
-          <thead>
-            <tr>
-              <th scope="col">Nombre del Documento</th>
-              <th scope="col">Categoría</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Tamaño</th>
-              <th scope="col" style="text-align:right;padding-right:20px">Acción</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            </tbody>
-        </table>
-      </div>
+    <!-- Tabla Ejecutiva en contenedor deslizable en móvil -->
+    <section class="table-wrap" aria-label="Repositorio de documentos">
+      <div class="table-scroll">
+        <table class="exec-table" role="table" aria-label="Tabla de documentos">
+          <thead>
+            <tr>
+              <th scope="col">Nombre del Documento</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Fecha de Carga</th>
+              <th scope="col">Tamaño</th>
+              <th scope="col" style="text-align:right;padding-right:20px">Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- JS inyecta filas dinámicamente -->
+          </tbody>
+        </table>
+      </div>
 
-      <div id="emptyState" class="empty-state" style="display:none">
-        <div style="font-weight:700;font-size:16px;margin-bottom:6px">No se encontraron documentos institucionales.</div>
-        <div style="font-size:13px;">Intente refinando la búsqueda o seleccionando otra categoría.</div>
-      </div>
-    </div>
+      <div id="emptyState" class="empty-state" style="display:none">
+        <div style="font-weight:700;font-size:16px;margin-bottom:6px">No se encontraron documentos institucionales que coincidan con los criterios.</div>
+        <div style="font-size:13px;color:var(--muted)">Refine la búsqueda o seleccione otra categoría.</div>
+      </div>
+    </section>
 
-    <footer>
-      <div>
-        © 2026 FONSECA ELZE INVERSIONES. Plataforma Corporativa Segura.
-      </div>
-      <div class="footer-links">
-        <div id="clock">⏰ --:--:--</div>
-        <span class="dot">•</span>
-        <a href="mailto:contacto@fonsecaelze.com">📧 Soporte</a>
-      </div>
-    </footer>
-  </div>
+    <footer>
+      <div>
+        © 2026 FONSECA ELZE INVERSIONES. Todos los derechos reservados.
+        <div style="font-size:12px;color:var(--muted);margin-top:6px">Centro de Documentos Corporativos - Plataforma Profesional Segura.</div>
+      </div>
+      <div class="footer-links">
+        <div id="clock" style="font-weight:700;color:var(--text);">⏰ --:--:--</div>
+        <span style="color:var(--muted)">•</span>
+        <a href="mailto:contacto@fonsecaelze.com">📧 Contacto</a>
+        <span style="color:var(--muted)">•</span>
+        <a href="#" aria-label="Términos del Servicio">📋 Términos del Servicio</a>
+      </div>
+    </footer>
 
-  <script>
-    let documents = [];
+  </div>
 
-    const totalDocumentsEl = document.getElementById('totalDocuments');
-    const activeCategoriesEl = document.getElementById('activeCategories');
-    const tableBody = document.getElementById('tableBody');
-    const searchInput = document.getElementById('searchInput');
-    const pills = Array.from(document.querySelectorAll('.pill'));
-    const emptyState = document.getElementById('emptyState');
-    const clockEl = document.getElementById('clock');
+  <script>
+    /**********************************************************************
+     * Lógica de datos: fetchRepositoryDocuments() → GitHub Contents API
+     * Correcciones:
+     * 1) API URL corregida con mayúsculas exactas del propietario.
+     * 2) Asegurar enlaces de descarga usando encodeURI() en el href.
+     *
+     * Mantener resto de lógica intacta.
+     **********************************************************************/
 
-    let activeCategory = 'all';
-    let query = '';
+    // Estado dinámico inyectado desde la API
+    let documents = [];
 
-    const CATEGORY_LABELS = {
-      analisis: 'Análisis',
-      financieros: 'Financieros',
-      corporativos: 'Corporativos',
-      proyecciones: 'Proyecciones',
-      otros: 'Otros'
-    };
+    // DOM refs
+    const totalDocumentsEl = document.getElementById('totalDocuments');
+    const activeCategoriesEl = document.getElementById('activeCategories');
+    const tableBody = document.getElementById('tableBody');
+    const searchInput = document.getElementById('searchInput');
+    const pills = Array.from(document.querySelectorAll('.pill'));
+    const emptyState = document.getElementById('emptyState');
+    const clockEl = document.getElementById('clock');
 
-    function init(){
-      attachEvents();
-      fetchRepositoryDocuments()
-        .then(fetched => {
-          documents = fetched;
-          updateKPIs();
-          render();
-        })
-        .catch(err => {
-          console.error('Error cargando API:', err);
-          updateKPIs();
-          render();
-        });
-      startClock();
-    }
+    // UI state
+    let activeCategory = 'all';
+    let query = '';
 
-    async function fetchRepositoryDocuments(){
-      const apiUrl = 'https://api.github.com/repos/capitalstructuring/Inversiones-Fonseca-Elze-/contents/';
-      const headers = { 'Accept': 'application/vnd.github.v3+json' };
+    // Etiquetas de categorías para mostrar en UI
+    const CATEGORY_LABELS = {
+      analisis: 'Análisis',
+      financieros: 'Financieros',
+      corporativos: 'Corporativos',
+      proyecciones: 'Proyecciones',
+      otros: 'Otros'
+    };
 
-      const resp = await fetch(apiUrl, { headers });
-      if (!resp.ok) throw new Error(`GitHub API Status: ${resp.status}`);
+    // INICIALIZACIÓN
+    function init(){
+      attachEvents();
+      // Carga automática desde GitHub
+      fetchRepositoryDocuments()
+        .then(fetched => {
+          documents = fetched;
+          updateKPIs();
+          render();
+        })
+        .catch(err => {
+          console.error('Error fetching repository contents:', err);
+          documents = [];
+          updateKPIs();
+          render();
+        });
+      startClock();
+    }
 
-      const data = await resp.json();
-      if (!Array.isArray(data)) throw new Error('Data format invalid.');
+    // CORRECCIÓN: URL de la API con case-sensitivity correcta (CapitalStructuring)
+    async function fetchRepositoryDocuments(){
+      const apiUrl = 'https://api.github.com/repos/CapitalStructuring/Inversiones-Fonseca-Elze-/contents/';
+      const headers = { 'Accept': 'application/vnd.github.v3+json' };
+      const resp = await fetch(apiUrl, { headers });
+      if (!resp.ok) {
+        throw new Error(`GitHub API responded ${resp.status} ${resp.statusText}`);
+      }
+      const data = await resp.json();
+      if (!Array.isArray(data)) throw new Error('Unexpected GitHub API response');
 
-      const allowedExt = /\.(pdf|xlsx|docx|doc)$/i;
-      const fileEntries = data.filter(item => item.type === 'file' && allowedExt.test(item.name) && !/index\.html$/i.test(item.name));
+      // Filtrar archivos por extensión permitida y excluir index.html u otros archivos de interfaz
+      const allowedExt = /\.(pdf|xlsx|docx|doc)$/i;
+      const entries = data.filter(item => item.type === 'file' && allowedExt.test(item.name) && !/index\.html$/i.test(item.name));
 
-      return fileEntries.map((file, idx) => {
-        const rawName = file.name;
-        
-        // CORRECCIÓN AUTOMÁTICA DE ENLACES: Procesa de forma interna y transparente cualquier espacio o símbolo roto
-        let cleanDownloadUrl = file.download_url || file.html_url;
-        try {
-          cleanDownloadUrl = decodeURIComponent(cleanDownloadUrl);
-        } catch(e) {
-          console.error("Error decodificando URL", e);
-        }
+      const mapped = entries.map((file, idx) => {
+        const rawName = file.name;
+        const title = cleanTitle(rawName);
+        const category = inferCategoryFromName(rawName);
+        const date = todayISO(); // la endpoint contents no provee fecha de commit aquí; usamos fecha actual
+        const size = humanFileSize(file.size);
+        // Fallback URL: raw.githubusercontent path encoded (owner uses correct casing)
+        const url = file.download_url || file.html_url || (`https://raw.githubusercontent.com/CapitalStructuring/Inversiones-Fonseca-Elze-/main/${encodeURIComponent(file.path)}`);
+        const status = assignStatusByExtension(rawName);
+        return {
+          id: idx + 1,
+          title,
+          category,
+          date,
+          size,
+          url,
+          status
+        };
+      });
 
-        return {
-          id: idx + 1,
-          title: cleanTitle(rawName),
-          category: inferCategoryFromName(rawName),
-          date: todayISO(),
-          size: humanFileSize(file.size),
-          url: cleanDownloadUrl,
-          status: 'Acceso Seguro'
-        };
-      });
-    }
+      return mapped;
+    }
 
-    function cleanTitle(filename){
-      return filename.replace(/\.[^/.]+$/, '').replace(/[_\-]+/g, ' ').replace(/\s+/g,' ').trim();
-    }
+    // -------------------------
+    // Utilidades de mapeo
+    // -------------------------
+    function cleanTitle(filename){
+      const noExt = filename.replace(/\.[^/.]+$/, '');
+      return noExt.replace(/[_\-]+/g, ' ').replace(/\s+/g,' ').trim();
+    }
 
-    function inferCategoryFromName(filename){
-      const n = filename.toLowerCase();
-      if (/balance|financ|capital|estado|consolidado|estados?/.test(n)) return 'financieros';
-      if (/memorandum|presentacion|presentación|perfil|pitch|board|acta|actas?/.test(n)) return 'corporativos';
-      if (/proyeccion|proyección|proyecciones|modelo|forecast|projections/.test(n)) return 'proyecciones';
-      if (/analys|analisis|análisis|market|mercado|report|informe/.test(n)) return 'analisis';
-      return 'otros';
-    }
+    function inferCategoryFromName(filename){
+      const n = filename.toLowerCase();
+      if (/balance|financ|capital|estado|consolidado|estados?/.test(n)) return 'financieros';
+      if (/memorandum|presentacion|presentación|perfil|pitch|board|acta|actas?/.test(n)) return 'corporativos';
+      if (/proyeccion|proyección|proyecciones|modelo|forecast|projection|proyecc/.test(n)) return 'proyecciones';
+      if (/analys|analisis|análisis|market|mercado|report|informe|analysis/.test(n)) return 'analisis';
+      return 'otros';
+    }
 
-    function todayISO(){
-      return new Date().toISOString().slice(0,10);
-    }
+    function todayISO(){
+      const now = new Date();
+      return now.toISOString().slice(0,10);
+    }
 
-    function humanFileSize(bytes){
-      if (bytes === 0) return '0 B';
-      const thresh = 1024;
-      if (Math.abs(bytes) < thresh) return bytes + ' B';
-      const units = ['KB','MB','GB'];
-      let u = -1; let val = bytes;
-      do { val /= thresh; ++u; } while(Math.abs(val) >= thresh && u < units.length - 1);
-      return val.toFixed(val >= 10 ? 1 : 2) + ' ' + units[u];
-    }
+    function humanFileSize(bytes){
+      if (bytes === 0) return '0 B';
+      const thresh = 1024;
+      if (Math.abs(bytes) < thresh) return bytes + ' B';
+      const units = ['KB','MB','GB','TB'];
+      let u = -1;
+      let val = bytes;
+      do {
+        val /= thresh;
+        ++u;
+      } while(Math.abs(val) >= thresh && u < units.length - 1);
+      return val.toFixed( (val >= 100) ? 0 : (val >= 10 ? 1 : 2) ) + ' ' + units[u];
+    }
 
-    function attachEvents(){
-      searchInput.addEventListener('input', (e) => {
-        query = e.target.value.trim().toLowerCase();
-        render();
-      });
+    function assignStatusByExtension(filename){
+      if (/\.(pdf)$/i.test(filename)) return 'Verificado';
+      return 'Acceso Seguro';
+    }
 
-      pills.forEach(p => {
-        p.addEventListener('click', () => {
-          pills.forEach(x => x.classList.remove('active'));
-          p.classList.add('active');
-          activeCategory = p.dataset.cat || 'all';
-          render();
-        });
-      });
-    }
+    // -------------------------
+    // Render / eventos UI
+    // -------------------------
+    function attachEvents(){
+      searchInput.addEventListener('input', (e) => {
+        query = e.target.value.trim().toLowerCase();
+        render();
+      });
 
-    function updateKPIs(){
-      totalDocumentsEl.textContent = documents.length;
-      activeCategoriesEl.textContent = new Set(documents.map(d => d.category)).size;
-    }
+      pills.forEach(p => {
+        p.addEventListener('click', () => {
+          pills.forEach(x => x.classList.remove('active'));
+          p.classList.add('active');
+          activeCategory = p.dataset.cat || 'all';
+          render();
+        });
+      });
+    }
 
-    function render(){
-      const visible = documents.filter(doc => {
-        const inCategory = (activeCategory === 'all') || (doc.category === activeCategory);
-        const matchesQuery = !query || doc.title.toLowerCase().includes(query);
-        return inCategory && matchesQuery;
-      });
+    function updateKPIs(){
+      totalDocumentsEl.textContent = documents.length;
+      activeCategoriesEl.textContent = computeActiveCategories();
+    }
 
-      tableBody.innerHTML = '';
-      if (visible.length === 0) {
-        emptyState.style.display = 'block';
-        return;
-      }
-      emptyState.style.display = 'none';
+    function computeActiveCategories(){
+      const set = new Set(documents.map(d => d.category));
+      return set.size;
+    }
 
-      const frag = document.createDocumentFragment();
-      visible.forEach(doc
-                      
+    function render(){
+      const visible = documents.filter(doc => {
+        const inCategory = (activeCategory === 'all') || (doc.category.toLowerCase() === activeCategory.toLowerCase());
+        const matchesQuery = !query || doc.title.toLowerCase().includes(query);
+        return inCategory && matchesQuery;
+      });
+
+      tableBody.innerHTML = '';
+
+      if (visible.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+      } else {
+        emptyState.style.display = 'none';
+      }
+
+      const frag = document.createDocumentFragment();
+      visible.forEach(doc => {
+        const tr = document.createElement('tr');
+
+        // Nombre
+        const tdName = document.createElement('td');
+        tdName.className = 'name';
+        tdName.innerHTML = `
+          <div class="file-icon" aria-hidden="true">${fileTypeSVG(doc)}</div>
+          <div>
+            <div class="doc-title">${escapeHtml(doc.title)}</div>
+            <div class="doc-sub">${displayCategoryLabel(doc.category)} • ${doc.date}</div>
+          </div>
+        `;
+        tr.appendChild(tdName);
+
+        // Categoría
+        const tdCat = document.createElement('td');
+        tdCat.innerHTML = `<span class="badge">${displayCategoryLabel(doc.category)}</span>`;
+        tr.appendChild(tdCat);
+
+        // Fecha
+        const tdDate = document.createElement('td');
+        tdDate.textContent = doc.date;
+        tr.appendChild(tdDate);
+
+        // Tamaño
+        const tdSize = document.createElement('td');
+        tdSize.textContent = doc.size;
+        tr.appendChild(tdSize);
+
+        // Acción
+        const tdAct = document.createElement('td');
+        tdAct.style.textAlign = 'right';
+        tdAct.style.paddingRight = '20px';
+        // CORRECCIÓN: asegurar encodeURI al establecer href para soportar espacios/paréntesis
+        const safeHref = encodeURI(doc.url || '#');
+        tdAct.innerHTML = `
+          <a class="action-btn" href="${safeHref}" target="_blank" rel="noopener noreferrer" aria-label="Descargar ${escapeHtml(doc.title)}">
+            <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            Descargar
+          </a>
+          <div style="text-align:right"><span class="status-pill" title="${escapeHtml(doc.status || '')}">${escapeHtml(doc.status || 'Verificado')}</span></div>
+        `;
+        tr.appendChild(tdAct);
+
+        frag.appendChild(tr);
+      });
+
+      tableBody.appendChild(frag);
+    }
+
+    // -------------------------
+    // UI Helpers
+    // -------------------------
+    function displayCategoryLabel(cat){
+      return CATEGORY_LABELS[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
+    }
+
+    function escapeHtml(str){
+      if(!str) return '';
+      return String(str).replace(/[&<>"'`=\/]/g, function(s){ return ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;",'/':'&#x2F;','`':'&#x60;','=':'&#x3D;'
+      })[s];});
+    }
+
+    function fileTypeSVG(doc){
+      const t = (doc.title || '').toLowerCase();
+      if (t.includes('financ') || t.includes('proforma') || t.includes('estado') || t.includes('balance') || t.includes('auditor')) {
+        return `<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="3" width="20" height="18" rx="3" fill="#fff" stroke="${'#E2E8F0'}"></rect>
+          <path d="M8 7h8M8 11h8M8 15h5" stroke="${'#0A369D'}" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>`;
+      }
+      if (t.includes('proye') || t.includes('modelo') || t.includes('forecast')) {
+        return `<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="3" width="20" height="18" rx="3" fill="#fff" stroke="${'#E2E8F0'}"></rect>
+          <path d="M7 7h10M7 11h10M7 15h10" stroke="${'#0E7490'}" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>`;
+      }
+      return `<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="2" y="3" width="20" height="18" rx="3" fill="#fff" stroke="${'#E2E8F0'}"></rect>
+        <path d="M8 7h8M8 11h8" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>`;
+    }
+
+    // Reloj digital
+    function startClock(){
+      function tick(){
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2,'0');
+        const mm = String(now.getMinutes()).padStart(2,'0');
+        const ss = String(now.getSeconds()).padStart(2,'0');
+        clockEl.textContent = `⏰ ${hh}:${mm}:${ss}`;
+      }
+      tick();
+      setInterval(tick,1000);
+    }
+
+    // Iniciar
+    init();
+  </script>
+</body>
+</html>
